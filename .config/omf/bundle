@@ -1,0 +1,4 @@
+package colored-man-pages
+package direnv
+package spark
+theme default

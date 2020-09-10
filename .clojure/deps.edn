@@ -1,0 +1,161 @@
+;; The deps.edn file describes the information needed to build a classpath.
+;;
+;; When using the `clojure` or `clj` script, there are several deps.edn files
+;; that are combined:
+;; - install-level
+;; - user level (this file)
+;; - project level (current directory when invoked)
+;;
+;; For all attributes other than :paths, these config files are merged left to right.
+;; Only the last :paths is kept and others are dropped.
+
+{;; Paths
+ ;;   Directories in the current project to include in the classpath
+
+ ;; :paths ["src"]
+
+ ;; External dependencies
+
+ ;; :deps {
+ ;;   org.clojure/clojure {:mvn/version "1.9.0"}
+ ;; }
+
+ ;; Aliases
+ ;;   resolve-deps aliases (-R) affect dependency resolution, options:
+ ;;     :extra-deps - specifies extra deps to add to :deps
+ ;;     :override-deps - specifies a coordinate to use instead of that in :deps
+ ;;     :default-deps - specifies a coordinate to use for a lib if one isn't found
+ ;;   make-classpath aliases (-C) affect the classpath generation, options:
+ ;;     :extra-paths - vector of additional paths to add to the classpath
+ ;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
+
+ ;; :aliases {
+ ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.2.196"}}}
+ ;;   :test {:extra-paths ["test"]}
+ ;; }
+
+ :aliases
+ {:1.8        {:override-deps {org.clojure/clojure {:mvn/version "1.8.0"}}}
+  :1.9        {:override-deps {org.clojure/clojure {:mvn/version "1.9.0"}}}
+  :1.10       {:override-deps {org.clojure/clojure {:mvn/version "1.10.0"}}}
+  :1.10.1     {:override-deps {org.clojure/clojure {:mvn/version "1.10.1"}}}
+  :bench      {:extra-deps {criterium          {:mvn/version "0.4.5"}
+                            com.taoensso/tufte {:mvn/version "2.0.1"}}}
+  :check      {:extra-deps {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
+                                             :sha     "a2f4d4cb6ef347bff420edb66629e41d530b9668"}}
+               :main-opts  ["-m" "clj-check.check"]}
+  :cljfmt     {:extra-deps {com.jameslaverack/cljfmt-runner
+                            {:git/url "https://github.com/JamesLaverack/cljfmt-runner"
+                             :sha     "d6952345b3047e03ca3a88f89a1433c109b7b442"}}
+               :main-opts  ["-m" "cljfmt-runner.check"]}
+  :cljfmt/fix {:main-opts ["-m" "cljfmt-runner.fix"]}
+  :cljs-test  {:extra-deps {olical/cljs-test-runner {:mvn/version "3.7.0"}}
+               :main-opts  ["-m" "cljs-test-runner.main"]}
+  :deps                                            ; to get access to clojure.tools.deps.alpha.repl/add-lib
+  ;; - now you can add new deps to a running REPL:
+  ;; (require '[clojure.tools.deps.alpha.repl :refer [add-lib]])
+  ;; (add-lib 'some/library {:mvn/version "RELEASE"})
+  ;; - and you can git deps too; here's how to get the master version of a lib:
+  ;; (require '[clojure.tools.gitlibs :as gitlibs])
+  ;; (defn load-master [lib]
+  ;;   (let [git (str "https://github.com/" lib ".git")]
+  ;;    (add-lib lib {:git/url git :sha (gitlibs/resolve git "master")})))
+  ;; - e.g., using the GitHub path (not the usual Maven group/artifact):
+  ;; (load-master 'clojure/tools.trace)
+              {:extra-deps {org.clojure/tools.deps.alpha
+                            {:git/url "https://github.com/clojure/tools.deps.alpha"
+                             :sha     "19d197ab221d37db750423eb970880cb87a91100"}}
+               ;; this ensures we have a DynamicClassLoader, which is needed for
+               ;; add-lib to work, if we're starting other processes via aliases
+               ;; such as a socket REPL or Cognitect's REBL etc
+               :main-opts  ["-e" "(->>(Thread/currentThread)(.getContextClassLoader)(clojure.lang.DynamicClassLoader.)(.setContextClassLoader,(Thread/currentThread)))"]}
+  ;; - see https://github.com/clojure-expectations/expectations
+  ;; - and https://github.com/clojure-expectations/clojure-test
+  ;; - run your expectations: clj -A:test:expect:runner
+  :expect     {:extra-deps {expectations              {:mvn/version "RELEASE"}
+                            expectations/clojure-test {:mvn/version "RELEASE"}}}
+
+  :find-deps  {:extra-deps {find-deps
+                            {:git/url "https://github.com/hagmonk/find-deps"
+                             :sha     "9bf23a52cb0a8190c9c2c7ad1d796da802f8ce7a"}}
+               :main-opts  ["-m" "find-deps.core"]}
+  ;; - see https://github.com/clojure-goes-fast/clj-memory-meter
+  ;; - (require '[clj-memory-meter.core :as mm])
+  ;; - (mm/measure (your-expression))
+  :measure    {:extra-deps {com.clojure-goes-fast/clj-memory-meter {:mvn/version "RELEASE"}}}
+  ;; project creation from templates:
+  ;; - see https://github.com/seancorfield/clj-new
+  ;; - create an application project:
+  ;;   - clj -A:new app myname/myapp
+  ;;   - cd myapp
+  ;;   - clj -m myname.myapp # run it!
+  ;;   - clj -A:test:runner # run the tests!
+  ;; - create a library project:
+  ;;   - clj -A:new lib myname/my-cool-lib
+  ;;   - cd my-cool-lib
+  ;;   - clj -A:test:runner # run the tests!
+  :new        {:extra-deps {seancorfield/clj-new {:mvn/version "RELEASE"}}
+               :main-opts  ["-m" "clj-new.create"]}
+  ;; REPL-related tools:
+  ;; - start a modern nREPL server on a random available port:
+  :nrepl      {:extra-deps {nrepl {:mvn/version "RELEASE"}}
+               :main-opts  ["-m" "nrepl.cmdline"]}
+  :outdated   {:extra-deps {olical/depot {:mvn/version "1.8.4"}}
+               :main-opts  ["-m" "depot.outdated.main"]}
+  :prepl      {:jvm-opts ["-Dclojure.server.prepl={:port,5556,:accept,clojure.core.server/io-prepl}"]}
+  ;; - see https://github.com/bhauman/rebel-readline
+  ;; - start a Rebel Readline REPL:
+  :rebel      {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}}
+               :main-opts  ["-m" "rebel-readline.main"]}
+  ;; - see https://github.com/cognitect-labs/REBL-distro
+  ;; - you need to download the REBL JAR (and update the local/root below)
+  ;; - you need to be using Clojure 1.10 and either
+  ;; - - Oracle JDK 8 -- use :rebl-8
+  ;; - - OpenJDK 11 -- use :rebl-11
+  :rebl-8     {:extra-deps {com.cognitect/rebl
+                            ;; adjust to match your install location
+                            {:local/root "/Users/matthew/Documents/Code/REBL/REBL-0.9.226/java8"}}
+               :main-opts  ["-m" "cognitect.rebl"]}
+  :rebl-11    {:extra-deps {com.cognitect/rebl
+                            ;; adjust to match your install location
+                            {:local/root "/Users/matthew/Documents/Code/REBL/REBL-0.9.226/openjfx15ea"}}
+               :main-opts  ["-m" "cognitect.rebl"]}
+  :socket     {:jvm-opts ["-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/repl}"]}
+  :test       {:extra-paths ["test"]
+               :extra-deps  {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                                        :sha     "cb96e80f6f3d3b307c59cbeb49bb0dcb3a2a780b"}}
+               :main-opts   ["-m" "cognitect.test-runner"]}}
+ ;; uberjar building:
+ ;; - see https://github.com/seancorfield/depstar for a minimalist approach:
+ ;;   - clj -A:uberjar result.jar
+ ;; - to run it:
+ ;;   - java -cp result.jar clojure.main -m mymain.namespace
+ ;; - build a library JAR:
+ ;;   - clj -A:jar result-lib.jar
+ :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+           :main-opts  ["-m" "hf.depstar.uberjar"]}
+ :jar     {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+           :main-opts  ["-m" "hf.depstar.jar"]}
+ ;; jar installation and deployment:
+ ;; - see https://github.com/slipset/deps-deploy
+ ;;   - clj -A:install project.jar
+ ;;   - clj -A:deploy project.jar
+ ;; - these rely on having a pom.xml file and, for deployment, these two
+ ;;   environment variables: CLOJARS_USERNAME, CLOJARS_PASSWORD
+ :install {:extra-deps {deps-deploy {:mvn/version "RELEASE"}}
+           :main-opts  ["-m" "deps-deploy.deps-deploy" "install"]}
+ :deploy  {:extra-deps {deps-deploy {:mvn/version "RELEASE"}}
+           :main-opts  ["-m" "deps-deploy.deps-deploy" "deploy"]}
+ :yourkit {:jvm-opts ["-agentpath:/Applications/YourKit-Java-Profiler-2018.04.app//Contents/Resources/bin/mac/libyjpagent.jnilib"]}
+
+ ;; - see https://github.com/vlaaad/reveal
+ :reveal  {:extra-deps {vlaaad/reveal {:mvn/version "RELEASE"}}}
+ ;; - see https://github.com/djblue/portal
+ :portal  {:extra-deps {djblue/portal {:mvn/version "RELEASE"}}}
+ ;; Provider attributes
+
+ ;; :mvn/repos {
+ ;;   "central" {:url "https://repo1.maven.org/maven2/"}
+ ;;   "clojars" {:url "https://clojars.org/repo"}
+ ;; }
+ }
