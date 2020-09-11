@@ -1,0 +1,1 @@
+(setf inf-clojure-lein-cmd '("localhost" . 5555))

@@ -1,0 +1,60 @@
+
+;; ----- smex-history -----
+(
+ query-replace
+ save-buffer
+ replace-string
+ server-start
+ eval-defun
+ rust-mode
+ package-list-packages
+)
+
+;; ----- smex-data -----
+(
+ (prelude-update . 6)
+ (package-list-packages . 9)
+ (toggle-debug-on-error . 1)
+ (projectile-discover-projects-in-directory . 2)
+ (projectile-add-known-project . 2)
+ (package-delete . 2)
+ (package-install . 8)
+ (package-autoremove . 2)
+ (mac-switch-meta . 1)
+ (undo . 1)
+ (comment-dwim . 1)
+ (ido-cr+-update-blacklist . 2)
+ (projectile-switch-project . 1)
+ (cider-connect . 1)
+ (describe-variable . 2)
+ (describe-mode . 2)
+ (inf-clojure-set-ns . 1)
+ (inf-clojure-quit . 1)
+ (inf-clojure-connect . 1)
+ (inf-clojure-eval-defun . 1)
+ (eval-expression . 2)
+ (load-theme . 6)
+ (inf-clojure-load-file . 1)
+ (goto-address-at-point . 1)
+ (customize-group . 2)
+ (inf-clojure-macroexpand . 6)
+ (projectile-switch-to-buffer . 2)
+ (switch-to-buffer . 1)
+ (paredit-mode . 1)
+ (prelude-github . 1)
+ (smartparens-mode . 1)
+ (backward-list . 1)
+ (magit-branch . 1)
+ (widen . 1)
+ (json-mode . 1)
+ (json-pretty-print . 1)
+ (package-refresh-contents . 1)
+ (eval-buffer . 2)
+ (rust-mode . 1)
+ (eval-defun . 1)
+ (hola . 3)
+ (server-start . 1)
+ (replace-string . 1)
+ (query-replace . 3)
+ (save-buffer . 1)
+)
