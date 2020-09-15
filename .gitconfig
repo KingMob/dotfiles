@@ -22,3 +22,5 @@
 	template = /Users/matthew/.stCommitMsg
 [init]
 	defaultBranch = main
+[credential]
+	helper = osxkeychain
