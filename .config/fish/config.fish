@@ -26,3 +26,4 @@ status --is-interactive; and source (jenv init -|psub)
 eval (direnv hook fish)
 
 
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
