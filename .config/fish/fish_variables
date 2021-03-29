@@ -4,6 +4,7 @@ SETUVAR EDITOR:emacs
 SETUVAR --export ENHANCD_DOT_ARG:\x2e\x2e\x2e
 SETUVAR --export FZF_DEFAULT_COMMAND:fd
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
+SETUVAR FZF_DISABLE_KEYBINDINGS:0
 SETUVAR FZF_LEGACY_KEYBINDINGS:1
 SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
@@ -14,7 +15,7 @@ SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
 SETUVAR Z_DATA:/Users/matthew/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/Users/matthew/\x2elocal/share/z
-SETUVAR Z_EXCLUDE:/Users/matthew
+SETUVAR Z_EXCLUDE:\x5e/Users/matthew\x24
 SETUVAR __fish_git_prompt_show_informative_status:true
 SETUVAR __fish_git_prompt_showcolorhints:true
 SETUVAR __fish_init_2_39_8:\x1d
@@ -52,4 +53,4 @@ SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_prompt_pwd_dir_length:0
 SETUVAR fish_user_paths:/Users/matthew/\x2ejenv/bin\x1e/Users/matthew/\x2ecargo/bin/
-SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d
+SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d\x1e\x22\x2c\x22\x1e\x27\x2c\x27
