@@ -8,9 +8,13 @@
                                              "/Users/matthew/Documents/Code/Cognitect/DMOT/ejendomme-og-grunde/model"
                                              "/Users/matthew/Documents/Code/Cognitect/DMOT/ejendomme-og-grunde/soda"
                                              "/Users/matthew/Documents/Code/Cognitect/DMOT/ejendomme-og-grunde/vurderings-api"]}
-               :dependencies [[hashp "0.2.0"]
-                              #_[clj-commons/pomegranate "1.2.0" :exclusions [org.apache.httpcomponents/httpclient org.apache.httpcomponents/httpcore]]]
-               :injections   [(require 'hashp.core)]}
+               :dependencies [#_[hashp "0.2.0"]
+                              #_[clj-commons/pomegranate "1.2.0" :exclusions [org.apache.httpcomponents/httpclient org.apache.httpcomponents/httpcore]]
+                              [com.gfredericks/debug-repl "0.0.11"]
+                              #_[vlaaad/reveal "1.0.137"]
+                              #_[djblue/portal "0.6.2"]]
+               :repl-options {:nrepl-middleware [com.gfredericks.debug-repl/wrap-debug-repl]}
+               #_#_:injections [(require 'hashp.core)]}
 
  :nvd         {:plugins [[lein-nvd "1.4.1"]
                          #_[lein-nvd "1.4.0" :exclusions [org.clojure/clojure org.apache.commons/commons-lang3 org.slf4j/jcl-over-slf4j com.fasterxml.jackson.core/jackson-annotations commons-io]]]
@@ -33,5 +37,7 @@
                :resource-paths ["/Users/matthew/Documents/Code/rebl/REBL-0.9.172/REBL-0.9.172.jar"]
                :injections     [(require '[cognitect.rebl :as rebl])]}
 
- :reveal      {:dependencies [[vlaaad/reveal "0.1.0-ea29"]]
-               :middleware [vlaaad.reveal.nrepl/middleware]}}
+ :reveal      {:dependencies [[vlaaad/reveal "1.1.163"]]
+               :middleware   [vlaaad.reveal.nrepl/middleware]}
+
+ :flow-storm  {:dependencies [[jpmonettas/flow-storm "0.3.2"]]}}

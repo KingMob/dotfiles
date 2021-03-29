@@ -10,10 +10,10 @@
 	excludesfile = /Users/matthew/.gitignore_global
 	editor = emacs
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [pager]
        diff = diff-so-fancy | less --tabs=1,5 -RFX
@@ -22,5 +22,13 @@
 	template = /Users/matthew/.stCommitMsg
 [init]
 	defaultBranch = main
+	templateDir = /Users/matthew/.git-template
 [credential]
 	helper = osxkeychain
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

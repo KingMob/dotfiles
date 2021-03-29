@@ -19,6 +19,8 @@ if status --is-interactive
     # alias moshmodulo='mosh --ssh="ssh -i ~/.ssh/Vultr_rsa" modulolotus.net'
 
     # alias gitrecent='git log --oneline --color=always | head'
+
+    alias unset 'set --erase'
 end
 
 status --is-interactive; and source (jenv init -|psub)
