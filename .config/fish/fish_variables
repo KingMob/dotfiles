@@ -2,7 +2,6 @@
 # VERSION: 3.0
 SETUVAR EDITOR:emacs
 SETUVAR --export ENHANCD_DOT_ARG:\x2e\x2e\x2e
-SETUVAR --export FZF_DEFAULT_COMMAND:fd
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dheight\x2040\x25
 SETUVAR FZF_DISABLE_KEYBINDINGS:0
 SETUVAR FZF_LEGACY_KEYBINDINGS:1
@@ -22,6 +21,14 @@ SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
+SETUVAR _fisher_franciscolourenco_2F_done_files:/Users/matthew/\x2econfig/fish/conf\x2ed/done\x2efish
+SETUVAR _fisher_jethrokuan_2F_fzf_files:/Users/matthew/\x2econfig/fish/functions/__fzf_cd\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_complete\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_complete_preview\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_find_file\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_get_dir\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_open\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_parse_commandline\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzf_reverse_isearch\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__fzfcmd\x2efish\x1e/Users/matthew/\x2econfig/fish/conf\x2ed/fzf\x2efish
+SETUVAR _fisher_jethrokuan_2F_z_files:/Users/matthew/\x2econfig/fish/functions/__z\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__z_add\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__z_clean\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/__z_complete\x2efish\x1e/Users/matthew/\x2econfig/fish/conf\x2ed/z\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fish_2D_spark_files:/Users/matthew/\x2econfig/fish/functions/spark\x2efish\x1e/Users/matthew/\x2econfig/fish/completions/spark\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/Users/matthew/\x2econfig/fish/functions/fisher\x2efish\x1e/Users/matthew/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_jorgebucaran_2F_humantime_2E_fish_files:/Users/matthew/\x2econfig/fish/functions/humantime\x2efish
+SETUVAR _fisher_laughedelic_2F_pisces_files:/Users/matthew/\x2econfig/fish/functions/_pisces_append\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_backspace\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_bind_pair\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_complete\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_insert_identical\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_insert_left\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_insert_right\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_jump\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_lookup\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_remove\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_should_insert\x2efish\x1e/Users/matthew/\x2econfig/fish/functions/_pisces_skip\x2efish\x1e/Users/matthew/\x2econfig/fish/conf\x2ed/pisces\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1efranciscolourenco/done\x1ejorgebucaran/fish\x2dspark\x1elaughedelic/pisces\x1ejethrokuan/fzf\x1ejethrokuan/z\x1ejorgebucaran/humantime\x2efish
 SETUVAR fish_color_autosuggestion:8e908c
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:8959a8
